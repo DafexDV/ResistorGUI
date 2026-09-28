@@ -8,7 +8,7 @@
     <artifactId>resistor-gui</artifactId>
     <name>ResistorGUI</name>
     <version>1.0-SNAPSHOT</version>
-    <url>https://github.com/DafexDV/resistor-gui</url>
+    <url>https://github.com/DafexDV/ResistorGUI</url>
 
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
