@@ -1,9 +1,6 @@
 package com.dafexdv.resistorgui.ui;
 
-import com.dafexdv.resistorgui.domain.DigitResistorColor;
-import com.dafexdv.resistorgui.domain.MultiplierResistorColor;
-import com.dafexdv.resistorgui.domain.Resistor;
-import com.dafexdv.resistorgui.domain.ToleranceResistorColor;
+import com.dafexdv.resistorgui.Utils;
 import com.dafexdv.resistorgui.state.AppState;
 
 import javax.swing.*;
@@ -11,24 +8,19 @@ import java.awt.*;
 
 public final class MainFrame extends JFrame {
 
-    private static final Resistor DEFAULT_RESISTOR = Resistor.of(
-            DigitResistorColor.RED,
-            DigitResistorColor.RED,
-            MultiplierResistorColor.BROWN,
-            ToleranceResistorColor.GOLDEN
-    );
-
     private final AppState state;
 
-    public MainFrame() {
-        this.state = new AppState(DEFAULT_RESISTOR);
+    public MainFrame(AppState state) {
+        this.state = state;
 
         setTitle("Resistor GUI");
-        setIconImage(new ImageIcon(getClass().getResource("/icon.png"), "Resistor GUI").getImage());
+        setIconImage(Utils.getAppImageIcon().getImage());
         setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 220);
+        setSize(400, 230);
+        setLocationRelativeTo(null);
         setResizable(false);
+        setJMenuBar(new MainMenuBar(state));
 
         addComponents();
     }

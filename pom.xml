@@ -6,7 +6,9 @@
 
     <groupId>com.dafexdv.resistorgui</groupId>
     <artifactId>resistor-gui</artifactId>
+    <name>Resistor GUI</name>
     <version>1.0-SNAPSHOT</version>
+    <url>https://github.com/DafexDV/resistor-gui</url>
 
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
@@ -26,5 +28,37 @@
             <version>3.7.2</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

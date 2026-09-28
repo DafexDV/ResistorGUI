@@ -10,12 +10,23 @@ import java.util.List;
 
 public final class AppState {
 
+    public static final Resistor DEFAULT_RESISTOR = Resistor.of(
+            DigitResistorColor.RED,
+            DigitResistorColor.RED,
+            MultiplierResistorColor.BROWN,
+            ToleranceResistorColor.GOLDEN
+    );
+
     private final List<AppStateListener> listeners = new ArrayList<>();
 
     private Resistor resistor;
 
     public AppState(Resistor resistor) {
         this.resistor = resistor;
+    }
+
+    public AppState() {
+        this(DEFAULT_RESISTOR);
     }
 
     public Resistor getResistor() {
@@ -44,6 +55,11 @@ public final class AppState {
 
     public void updateResistorBand4(ToleranceResistorColor band4) {
         resistor = resistor.withBand4(band4);
+        notifyListeners();
+    }
+
+    public void resetResistor() {
+        resistor = DEFAULT_RESISTOR;
         notifyListeners();
     }
 
