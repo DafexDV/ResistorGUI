@@ -62,7 +62,6 @@ public final class ResistorDisplayComponent extends JPanel implements AppStateLi
             state.addListener(this);
 
             setPreferredSize(new Dimension(260, 80));
-            //setBorder(BorderFactory.createLineBorder(Color.RED));
             setOpaque(false);
         }
 

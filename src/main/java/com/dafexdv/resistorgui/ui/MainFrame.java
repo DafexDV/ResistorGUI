@@ -15,9 +15,9 @@ public final class MainFrame extends JFrame {
 
         setTitle("Resistor GUI");
         setIconImage(Utils.getAppImageIcon().getImage());
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 230);
+        setSize(450, 280);
         setLocationRelativeTo(null);
         setResizable(false);
         setJMenuBar(new MainMenuBar(state));
@@ -26,13 +26,18 @@ public final class MainFrame extends JFrame {
     }
 
     private void addComponents() {
-        var resistorComponent = new ResistorDisplayComponent(state);
+        GridBagConstraints gbc = new GridBagConstraints();
 
-        add(resistorComponent, BorderLayout.CENTER);
+        var resistorComponent = new ResistorDisplayComponent(state);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        add(resistorComponent, gbc);
 
         var resistorInputsComponent = new ResistorInputsComponent(state);
+        gbc.gridy = 1;
 
-        add(resistorInputsComponent, BorderLayout.SOUTH);
+        add(resistorInputsComponent, gbc);
     }
 
 }

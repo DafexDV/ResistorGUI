@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 public final class AboutDialog extends JDialog {
 
@@ -62,10 +61,20 @@ public final class AboutDialog extends JDialog {
         JLabel authorLabel = new JLabel("Author: " + "DafexDV");
         listPanel.add(authorLabel);
 
-        JLabel githubLabel = new JLabel("Website");
-        githubLabel.setForeground(Color.BLUE);
+        JLabel githubLabel = new JLabel("<html>Website</html>");
+        githubLabel.setForeground(Color.CYAN);
         githubLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         githubLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                githubLabel.setText("<html><u>Website</u></html>");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                githubLabel.setText("<html>Website</html>");
+            }
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 String url = BuildProperties.url();

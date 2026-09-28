@@ -1,18 +1,28 @@
 package com.dafexdv.resistorgui;
 
-import com.dafexdv.resistorgui.state.AppState;
-import com.dafexdv.resistorgui.ui.MainFrame;
-import com.formdev.flatlaf.FlatLightLaf;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public final class Main {
 
     public static void main(String[] args) {
-        FlatLightLaf.setup();
+        try {
+            ApplicationPaths.initialize();
 
-        AppState state = new AppState();
+            Path logFile = ApplicationPaths.logDirectory()
+                    .resolve("application.log");
 
-        MainFrame mainFrame = new MainFrame(state);
-        mainFrame.setVisible(true);
+            System.out.println("Log file: " + logFile.toAbsolutePath());
+
+            System.setProperty(
+                    "resistorgui.log.file",
+                    logFile.toAbsolutePath().toString()
+            );
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to create directories");
+        }
+
+        Application.start();
     }
 
 }
