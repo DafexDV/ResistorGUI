@@ -24,6 +24,7 @@ public final class MainFrame extends JFrame {
         this.state = new AppState(DEFAULT_RESISTOR);
 
         setTitle("Resistor GUI");
+        setIconImage(new ImageIcon(getClass().getResource("/icon.png"), "Resistor GUI").getImage());
         setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 220);
