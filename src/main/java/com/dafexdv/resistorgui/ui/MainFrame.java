@@ -1,5 +1,6 @@
 package com.dafexdv.resistorgui.ui;
 
+import com.dafexdv.resistorgui.BuildProperties;
 import com.dafexdv.resistorgui.Utils;
 import com.dafexdv.resistorgui.state.AppState;
 
@@ -13,7 +14,7 @@ public final class MainFrame extends JFrame {
     public MainFrame(AppState state) {
         this.state = state;
 
-        setTitle("Resistor GUI");
+        setTitle(BuildProperties.name() + " " + BuildProperties.version());
         setIconImage(Utils.getAppImageIcon().getImage());
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
