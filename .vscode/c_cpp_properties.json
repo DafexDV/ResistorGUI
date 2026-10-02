@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "compilerPath": "/usr/bin/c++",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "/usr/include/qt6",
+                "/usr/include/qt6/QtCore",
+                "/usr/include/qt6/QtGui",
+                "/usr/include/qt6/QtWidgets"
+            ]
+        }
+    ],
+    "version": 4
+}
