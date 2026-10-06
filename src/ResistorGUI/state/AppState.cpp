@@ -1,5 +1,6 @@
 #include "ResistorGUI/state/AppState.hpp"
 
+#include <QDebug>
 #include <memory>
 #include <qtmetamacros.h>
 #include <stdexcept>
@@ -35,14 +36,24 @@ AppState::AppState(QObject *parent) : QObject(parent)
 }
 
 template <typename Getter, typename Setter, typename T>
-void AppState::updateCurrentResistorBand(Getter getter, Setter setter, T band)
+void AppState::updateCurrentResistorBand(Getter getter, Setter setter, std::string bandTypeName, T band)
 {
-    if (std::invoke(getter, _currentResistor) == band)
+	auto existing = std::invoke(getter, _currentResistor);
+
+    if (existing == band)
     {
         return;
     }
 
     std::invoke(setter, _currentResistor, band);
+
+    qInfo().noquote()
+        << "Updated current resistor "
+        << bandTypeName
+        << " band: "
+	    << to_string(existing)
+        << " -> "
+        << to_string(band);
 
     emit currentResistorChanged();
     emit stateChanged();
@@ -59,6 +70,14 @@ void AppState::updateCurrentResistorDigitalBand(unsigned int index, DigitResisto
 
     _currentResistor->setDigitBand(index, band);
 
+    qInfo().noquote()
+        << "Updated current resistor digit band #"
+        << QString::number(index)
+        << ": "
+	    << to_string(band)
+        << " -> "
+        << to_string(band);
+
     emit currentResistorChanged();
     emit stateChanged();
 }
@@ -68,6 +87,7 @@ void AppState::updateCurrentResistorMultiplierBand(MultiplierResistorBand band)
     updateCurrentResistorBand(
         &Resistor::multiplierBand,
         &Resistor::setMultiplierBand,
+        "multiplier",
         band
     );
 }
@@ -77,6 +97,7 @@ void AppState::updateCurrentResistorToleranceBand(ToleranceResistorBand band)
     updateCurrentResistorBand(
         &Resistor::toleranceBand,
         &Resistor::setToleranceBand,
+        "tolerance",
         band
     );
 }
@@ -86,6 +107,7 @@ void AppState::updateCurrentResistorTempCoBand(TempCoResistorBand band)
     updateCurrentResistorBand(
         &Resistor::tempCoBand,
         &Resistor::setTempCoBand,
+        "temperature coefficient",
         band
     );
 }
@@ -108,10 +130,14 @@ void AppState::switchKind(ResistorKind newKind)
     case ResistorKind::SixBands:
         _currentResistor = _resistor6.get();
         break;
-    default:
+    default:http://www.gnu.org/licenses/gpl-3.0.html
         throw std::invalid_argument(
             "Invalid resistor kind");
     }
+
+    qInfo()
+        << "Switched kind to "
+        << to_string(newKind);
 
     emit switchedKind();
     emit stateChanged();
@@ -145,4 +171,7 @@ void AppState::resetResistors()
     default:
         throw std::invalid_argument("Invalid resistor kind");
     }
+
+    qInfo()
+        << "Resistors reset";
 }

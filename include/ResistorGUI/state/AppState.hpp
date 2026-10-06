@@ -48,5 +48,5 @@ private:
     Resistor* _currentResistor;
 
     template <typename Getter, typename Setter, typename T>
-    void updateCurrentResistorBand(Getter getter, Setter setter, T band);
+    void updateCurrentResistorBand(Getter getter, Setter setter, std::string bandTypeName, T band);
 };

@@ -1,11 +1,9 @@
 #include "ResistorGUI/ui/ResistorInputsWidget.hpp"
 #include "ResistorGUI/domain/ResistorBand.hpp"
-#include "ResistorGUI/Utils.hpp"
 
 #include <QComboBox>
 #include <QGridLayout>
 #include <QLabel>
-#include <iostream>
 
 template <typename T>
 static QComboBox *createResistorComboBox(

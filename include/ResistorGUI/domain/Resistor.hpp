@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <stdexcept>
 #include "ResistorGUI/domain/ResistorBand.hpp"
 #include "ResistorGUI/domain/ResistorKind.hpp"
