@@ -7,6 +7,7 @@ project(ResistorGUI
 set(PROJECT_VERSION 0.0.1-02102026)
 set(PROJECT_AUTHOR "DafexDV")
 set(PROJECT_LICENSE "GPLv3")
+set(PROJECT_LICENSE_URL http://www.gnu.org/licenses/gpl-3.0.html)
 set(PROJECT_DESCRIPTION "GUI for calculating resistor values")
 set(PROJECT_GITHUB "https://github.com/DafexDV/ResistorGUI")
 

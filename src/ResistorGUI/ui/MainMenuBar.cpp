@@ -2,6 +2,8 @@
 
 #include <QMenu>
 #include <QMessageBox>
+#include <QUrl>
+#include <QDesktopServices>
 #include "BuildInfo.hpp"
 
 MainMenuBar::MainMenuBar(AppState& state, QWidget* parent)
@@ -26,7 +28,19 @@ void MainMenuBar::initUI()
     );
 
     QMenu* helpMenu = addMenu("Help");
+    QAction* licenseAction = helpMenu->addAction("License");
     QAction* aboutAction = helpMenu->addAction("About");
+
+    connect(
+        licenseAction,
+        &QAction::triggered,
+        this,
+        [this]() {
+            QDesktopServices::openUrl(
+                QUrl(RESISTOR_GUI_LICENSE_URL)
+            );
+        }
+    );
 
     connect(
         aboutAction,
