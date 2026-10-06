@@ -1,5 +1,4 @@
-#ifndef RESISTOR_GUI_DOMAIN_RESISTOR_COLOR_H
-#define RESISTOR_GUI_DOMAIN_RESISTOR_COLOR_H
+#pragma once
 
 #include <stdint.h>
 #include <string>
@@ -131,5 +130,3 @@ inline const std::vector<TempCoResistorBand> TEMP_CO_RESISTOR_BANDS{
 double resistor_color_value(TempCoResistorBand);
 const ResistorBandRgb* resistor_color_rgb(TempCoResistorBand);
 std::string to_string(TempCoResistorBand);
-
-#endif

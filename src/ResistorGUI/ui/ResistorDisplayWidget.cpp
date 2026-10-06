@@ -10,7 +10,7 @@
 #define BODY_WIDTH 160
 #define BODY_HEIGHT 40
 #define BODY_CENTER_HEIGHT 30
-#define BAND_WIDTH 12
+#define BAND_WIDTH 8
 
 inline const QColor WIRE_COLOR(192, 192, 192);
 inline const QColor BODY_COLOR(29, 107, 171);
@@ -69,15 +69,15 @@ private:
         int bodyWidth;
         if (typeid(resistor) == typeid(Resistor4))
         {
-            bodyWidth = 160;
+            bodyWidth = 120;
         }
         else if (typeid(resistor) == typeid(Resistor5))
         {
-            bodyWidth = 190;
+            bodyWidth = 145;
         }
         else if (typeid(resistor) == typeid(Resistor6))
         {
-            bodyWidth = 220;
+            bodyWidth = 160;
         }
         else
         {
@@ -108,12 +108,16 @@ private:
 
         QPolygon polygon;
         polygon << QPoint(bodyX, centerY - BODY_HEIGHT / 2)
+                << QPoint(bodyX + 20, centerY - BODY_HEIGHT / 2)
                 << QPoint(bodyX + 20, centerY - BODY_CENTER_HEIGHT / 2)
                 << QPoint(bodyX + bodyWidth - 20, centerY - BODY_CENTER_HEIGHT / 2)
+                << QPoint(bodyX + bodyWidth - 20, centerY - BODY_HEIGHT / 2)
                 << QPoint(bodyX + bodyWidth, centerY - BODY_HEIGHT / 2)
                 << QPoint(bodyX + bodyWidth, centerY + BODY_HEIGHT / 2)
+                << QPoint(bodyX + bodyWidth - 20, centerY + BODY_HEIGHT / 2)
                 << QPoint(bodyX + bodyWidth - 20, centerY + BODY_CENTER_HEIGHT / 2)
                 << QPoint(bodyX + 20, centerY + BODY_CENTER_HEIGHT / 2)
+                << QPoint(bodyX + 20, centerY + BODY_HEIGHT / 2)
                 << QPoint(bodyX, centerY + BODY_HEIGHT / 2);
 
         painter.drawPolygon(polygon);
@@ -147,28 +151,28 @@ private:
     void paintResistor4Bands(QPainter &painter, const Resistor4 &resistor, int bodyX, int centerY)
     {
         painter.fillRect(
-            bodyX + 30,
-            centerY - BODY_CENTER_HEIGHT / 2,
+            bodyX + 6,
+            centerY - BODY_HEIGHT / 2,
             BAND_WIDTH,
-            BODY_CENTER_HEIGHT,
+            BODY_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(0)));
 
         painter.fillRect(
-            bodyX + 60,
+            bodyX + 30,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(1)));
 
         painter.fillRect(
-            bodyX + 90,
+            bodyX + 55,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.multiplierBand()));
 
         painter.fillRect(
-            bodyX + 125,
+            bodyX + 90,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
@@ -178,35 +182,35 @@ private:
     void paintResistor5Bands(QPainter &painter, const Resistor5 &resistor, int bodyX, int centerY)
     {
         painter.fillRect(
-            bodyX + 30,
-            centerY - BODY_CENTER_HEIGHT / 2,
+            bodyX + 6,
+            centerY - BODY_HEIGHT / 2,
             BAND_WIDTH,
-            BODY_CENTER_HEIGHT,
+            BODY_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(0)));
 
         painter.fillRect(
-            bodyX + 60,
+            bodyX + 30,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(1)));
 
         painter.fillRect(
-            bodyX + 90,
+            bodyX + 55,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(2)));
 
         painter.fillRect(
-            bodyX + 120,
+            bodyX + 80,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.multiplierBand()));
 
         painter.fillRect(
-            bodyX + 155,
+            bodyX + 115,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
@@ -216,45 +220,45 @@ private:
     void paintResistor6Bands(QPainter &painter, const Resistor6 &resistor, int bodyX, int centerY)
     {
         painter.fillRect(
-            bodyX + 30,
-            centerY - BODY_CENTER_HEIGHT / 2,
+            bodyX + 6,
+            centerY - BODY_HEIGHT / 2,
             BAND_WIDTH,
-            BODY_CENTER_HEIGHT,
+            BODY_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(0)));
 
         painter.fillRect(
-            bodyX + 60,
+            bodyX + 30,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(1)));
 
         painter.fillRect(
-            bodyX + 90,
+            bodyX + 55,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.digitBand(2)));
 
         painter.fillRect(
-            bodyX + 120,
+            bodyX + 80,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.multiplierBand()));
 
         painter.fillRect(
-            bodyX + 155,
+            bodyX + 105,
             centerY - BODY_CENTER_HEIGHT / 2,
             BAND_WIDTH,
             BODY_CENTER_HEIGHT,
             get_color_from_resistor_band(resistor.toleranceBand()));
 
         painter.fillRect(
-            bodyX + 185,
-            centerY - BODY_CENTER_HEIGHT / 2,
+            bodyX + 146,
+            centerY - BODY_HEIGHT / 2,
             BAND_WIDTH,
-            BODY_CENTER_HEIGHT,
+            BODY_HEIGHT,
             get_color_from_resistor_band(resistor.tempCoBand()));
     }
 };

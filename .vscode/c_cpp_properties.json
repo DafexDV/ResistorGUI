@@ -7,6 +7,7 @@
             "intelliSenseMode": "linux-gcc-x64",
             "includePath": [
                 "${workspaceFolder}/include",
+                "${workspaceFolder}/build/generated",
                 "/usr/include/qt6",
                 "/usr/include/qt6/QtCore",
                 "/usr/include/qt6/QtGui",

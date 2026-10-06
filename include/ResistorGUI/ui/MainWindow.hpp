@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_UI_MAIN_WINDOW_HPP
-#define RESISTORGUI_UI_MAIN_WINDOW_HPP
+#pragma once
 
 #include <QMainWindow>
 #include "ResistorGUI/state/AppState.hpp"
@@ -16,5 +15,3 @@ private:
 
     void initUI();
 };
-
-#endif

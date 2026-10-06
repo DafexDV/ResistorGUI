@@ -1,9 +1,8 @@
-#ifndef RESISTORGUI_DOMAIN_RESISTOR5_HPP
-#define RESISTORGUI_DOMAIN_RESISTOR5_HPP
+#pragma once
 
-#include "ResistorGUI/domain/MutableResistor.hpp"
+#include "ResistorGUI/domain/Resistor.hpp"
 
-class Resistor5 final : public MutableResistor
+class Resistor5 final : public Resistor
 {
 private:
     DigitResistorBand _band1;
@@ -109,5 +108,3 @@ public:
     }
 
 };
-
-#endif

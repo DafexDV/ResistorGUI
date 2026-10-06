@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="resistor-gui.svg">assets/icons/resistor-gui.svg</file>
+        <file alias="resistor-gui.svg">resources/icons/resistor-gui.svg</file>
     </qresource>
 </RCC>

@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_UI_KIND_SWITCHER_HPP
-#define RESISTORGUI_UI_KIND_SWITCHER_HPP
+#pragma once
 
 #include <QWidget>
 #include <QButtonGroup>
@@ -21,5 +20,3 @@ private:
 
     QPushButton* createToggleButton(QButtonGroup* group, ResistorKind value);
 };
-
-#endif

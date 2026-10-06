@@ -1,6 +1,7 @@
 #include "ResistorGUI/ui/MainWindow.hpp"
 
 #include <QVBoxLayout>
+#include "ResistorGUI/ui/MainMenuBar.hpp"
 #include "ResistorGUI/ui/KindSwitcher.hpp"
 #include "ResistorGUI/ui/ResistorDisplayWidget.hpp"
 #include "ResistorGUI/ui/ResistorInputsWidget.hpp"
@@ -17,6 +18,9 @@ MainWindow::MainWindow(AppState& state, QWidget* parent)
 
     QIcon icon = QIcon::fromTheme("resistor-gui", QIcon(":/icons/resistor-gui.svg"));
     setWindowIcon(icon);
+
+    auto* menuBar = new MainMenuBar(state, this);
+    setMenuBar(menuBar);
 
     initUI();
 }

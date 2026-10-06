@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_UI_RESISTOR_DISPLAY_WIDGET_HPP
-#define RESISTORGUI_UI_RESISTOR_DISPLAY_WIDGET_HPP
+#pragma once
 
 #include <QWidget>
 #include <QLabel>
@@ -21,5 +20,3 @@ private:
 
     void initUI();
 };
-
-#endif

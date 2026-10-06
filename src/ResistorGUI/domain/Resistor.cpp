@@ -3,7 +3,6 @@
 
 std::string Resistor::to_string() const
 {
-
     std::string str;
 
     double resistance = this->resistance();

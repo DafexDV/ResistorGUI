@@ -41,13 +41,43 @@ static QComboBox *createResistorComboBox(
 ResistorInputsWidget::ResistorInputsWidget(AppState &state, QWidget *parent)
     : QWidget(parent), _state(state), _digitComboBoxes({})
 {
+    connect(
+        &_state,
+        &AppState::switchedKind,
+        this,
+        [this]() {
+            clearUI();
+            initUI();
+        }
+    );
+
     initUI();
+}
+
+void ResistorInputsWidget::clearUI()
+{
+    _digitComboBoxes.clear();
+    _multiplierComboBox = nullptr;
+    _toleranceComboBox = nullptr;
+    _tempCoComboBox = nullptr;
+
+    if (QLayout* oldLayout = layout())
+    {
+        while (QLayoutItem* item = oldLayout->takeAt(0))
+        {
+            if (QWidget* widget = item->widget())
+            {
+                widget->hide();
+                widget->deleteLater();
+            }
+            delete item;
+        }
+        delete oldLayout;
+    }
 }
 
 void ResistorInputsWidget::initUI()
 {
-    _digitComboBoxes.clear();
-
     auto &resistor = _state.currentResistor();
     int digitBandCount = resistor.digitBandCount();
 
@@ -150,6 +180,15 @@ void ResistorInputsWidget::initUI()
             TEMP_CO_RESISTOR_BANDS,
             resistor.tempCoBand(),
             this);
+        connect(
+            _tempCoComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            [this](int index)
+            {
+                int value = _tempCoComboBox->itemData(index).toInt();
+                _state.updateCurrentResistorTempCoBand(static_cast<TempCoResistorBand>(value));
+            });
         layout->addWidget(_tempCoComboBox, row, column);
     }
     else

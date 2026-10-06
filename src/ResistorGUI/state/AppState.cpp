@@ -66,8 +66,8 @@ void AppState::updateCurrentResistorDigitalBand(unsigned int index, DigitResisto
 void AppState::updateCurrentResistorMultiplierBand(MultiplierResistorBand band)
 {
     updateCurrentResistorBand(
-        &MutableResistor::multiplierBand,
-        &MutableResistor::setMultiplierBand,
+        &Resistor::multiplierBand,
+        &Resistor::setMultiplierBand,
         band
     );
 }
@@ -75,8 +75,8 @@ void AppState::updateCurrentResistorMultiplierBand(MultiplierResistorBand band)
 void AppState::updateCurrentResistorToleranceBand(ToleranceResistorBand band)
 {
     updateCurrentResistorBand(
-        &MutableResistor::toleranceBand,
-        &MutableResistor::setToleranceBand,
+        &Resistor::toleranceBand,
+        &Resistor::setToleranceBand,
         band
     );
 }
@@ -84,8 +84,8 @@ void AppState::updateCurrentResistorToleranceBand(ToleranceResistorBand band)
 void AppState::updateCurrentResistorTempCoBand(TempCoResistorBand band)
 {
     updateCurrentResistorBand(
-        &MutableResistor::tempCoBand,
-        &MutableResistor::setTempCoBand,
+        &Resistor::tempCoBand,
+        &Resistor::setTempCoBand,
         band
     );
 }
@@ -121,9 +121,9 @@ void AppState::resetResistors()
 {
     auto kind = currentResistorKind();
 
-    _resistor4 = std::make_unique<Resistor4>(DEFAULT_RESISTOR4);
-    _resistor5 = std::make_unique<Resistor5>(DEFAULT_RESISTOR5);
-    _resistor6 = std::make_unique<Resistor6>(DEFAULT_RESISTOR6);
+    *_resistor4 = DEFAULT_RESISTOR4;
+    *_resistor5 = DEFAULT_RESISTOR5;
+    *_resistor6 = DEFAULT_RESISTOR6;
 
     switch (kind)
     {

@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_UI_RESISTOR_INPUTS_WIDGET_HPP
-#define RESISTORGUI_UI_RESISTOR_INPUTS_WIDGET_HPP
+#pragma once
 
 #include <QWidget>
 #include <QComboBox>
@@ -23,7 +22,6 @@ private:
     QComboBox* _tempCoComboBox;
 
     void initUI();
+    void clearUI();
 
 };
-
-#endif

@@ -1,9 +1,8 @@
-#ifndef RESISTORGUI_DOMAIN_RESISTOR6_HPP
-#define RESISTORGUI_DOMAIN_RESISTOR6_HPP
+#pragma once
 
-#include "ResistorGUI/domain/MutableResistor.hpp"
+#include "ResistorGUI/domain/Resistor.hpp"
 
-class Resistor6 final : public MutableResistor
+class Resistor6 final : public Resistor
 {
 private:
     DigitResistorBand _band1;
@@ -51,6 +50,11 @@ public:
         return resistor_color_value(this->_band5);
     }
 
+    double temperatureCoefficient() const override
+    {
+        return resistor_color_value(this->_band6);
+    }
+
     DigitResistorBand digitBand(unsigned int index) const override
     {
         switch (index)
@@ -58,7 +62,7 @@ public:
         case 0:
             return _band1;
         case 1:
-            return _band1;
+            return _band2;
         case 2:
             return _band3;
         default:
@@ -120,6 +124,6 @@ public:
     {
         _band6 = band;
     }
-};
 
-#endif
+    std::string to_string() const override;
+};

@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_DOMAIN_RESISTOR_KIND_HPP
-#define RESISTORGUI_DOMAIN_RESISTOR_KIND_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -18,5 +17,3 @@ inline const std::vector<ResistorKind> RESISTOR_KINDS{
 };
 
 std::string to_string(ResistorKind kind);
-
-#endif

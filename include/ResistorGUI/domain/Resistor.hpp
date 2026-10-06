@@ -1,5 +1,4 @@
-#ifndef RESISTORGUI_DOMAIN_RESISTOR_HPP
-#define RESISTORGUI_DOMAIN_RESISTOR_HPP
+#pragma once
 
 #include <memory>
 #include <stdexcept>
@@ -17,6 +16,11 @@ public:
 
     virtual double tolerance() const = 0;
 
+    virtual double temperatureCoefficient() const
+    {
+        throw std::logic_error("Operation not supported");
+    }
+
     virtual DigitResistorBand digitBand(unsigned int index) const = 0;
     virtual MultiplierResistorBand multiplierBand() const = 0;
     virtual ToleranceResistorBand toleranceBand() const = 0;
@@ -28,7 +32,16 @@ public:
 
     virtual unsigned int digitBandCount() const = 0;
 
+    virtual void setDigitBand(unsigned int index, DigitResistorBand band) = 0;
+
+    virtual void setMultiplierBand(MultiplierResistorBand band) = 0;
+
+    virtual void setToleranceBand(ToleranceResistorBand band) = 0;
+
+    virtual void setTempCoBand(TempCoResistorBand band)
+    {
+        throw std::logic_error("Operation not supported");
+    }
+
     virtual std::string to_string() const;
 };
-
-#endif
